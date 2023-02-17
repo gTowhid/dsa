@@ -19,20 +19,20 @@ function rev(test) {
 console.log(rev(arr)); */
 
 const arr = [-1, 0, 3, 5, 9, 12];
-const target = 0;
+const tar = 12;
 
-function findIndex(array) {
+function findIndex(array, target) {
   const index = Math.floor(array.length / 2);
 
   if (array[index] == target) {
     return index;
   } else if (array[index] < target) {
-    return index + 1 + findIndex(array.slice(index + 1));
+    const interResult = findIndex(array.slice(index + 1), target);
+    return interResult >= 0 ? index + 1 + interResult : -1;
   } else if (array[index] > target) {
-    return findIndex(array.slice(0, index));
-  } else {
-    return undefined;
+    const interResult = findIndex(array.slice(0, index), target);
+    return interResult >= 0 ? interResult : -1;
   }
 }
 
-console.log(findIndex(arr) || -1);
+console.log(findIndex(arr, tar));
