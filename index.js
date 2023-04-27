@@ -18,7 +18,7 @@ function rev(test) {
 
 console.log(rev(arr)); */
 
-const arr = [-1, 0, 3, 5, 9, 12];
+/* const arr = [-1, 0, 3, 5, 9, 12];
 const tar = 12;
 
 function findIndex(array, target) {
@@ -35,4 +35,24 @@ function findIndex(array, target) {
   }
 }
 
-console.log(findIndex(arr, tar));
+console.log(findIndex(arr, tar)); */
+
+function digitizer(number) {
+  if (number < 10) return number;
+  else {
+    let digit_arr = number.toString().split('');
+
+    let result;
+    do {
+      result = digit_arr.reduce((total, digit) => {
+        return total + parseInt(digit);
+      }, 0);
+
+      digit_arr = result.toString().split('');
+    } while (result > 9);
+
+    return result;
+  }
+}
+
+console.log(digitizer(543));
